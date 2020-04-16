@@ -1,0 +1,21 @@
+
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Sobre - Desafio 03.1</title>
+{% endblock head %}
+
+
+{% block content %}
+
+    <section class="about">
+            <h1 class="title-default rocket__title">{{about.title_about}}</h1>
+
+            <div class="rocket__infos">
+                <p class="rocket__desc">{{about.desc_about}}</p>
+
+                <p class="rocket__desc">{{about.desctwo_about}}</p>
+            </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Home - Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="best-receitas">
+        <div class="container">
+            <div class="thumb">
+                <div class="thumb__info">
+                    <h2 class="title-default thumb__title">{{ infoHome.title_home }}</h2>
+                    <p class="thumb__desc">{{ infoHome.desc_home }}</p>
+                </div>
+                <div class="thumb__img">
+                    <img src="./img/chef.png" alt="Chefe das Receitas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mais-acessadas">
+        <div class="container">
+            <div class="receitas__thumb">
+                <h2 class="title-default receitas__title">{{ infoHome.topic_home }}</h2>
+                <div class="receitas__boxes">
+                
+                    {% for recipe in recipes %}
+                    <div class="receitas__card" id="{{ recipe.id}}">
+                        <figure class="receitas__img">
+                            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                        </figure>
+                        <strong class="receitas__subtitle">{{ recipe.title }}</strong>
+                        <p class="receitas__author">{{ recipe.author }}</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  content %}

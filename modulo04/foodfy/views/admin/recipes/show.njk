@@ -1,0 +1,88 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Receita detalhada - Foodfy</title>
+{% endblock head %}
+
+{% block navbar %}
+    <header class="bg-black">
+        <div class="container">
+        
+            <div class="navbar bg-black">
+                <h1 class="navbar__logo">
+                    <a href="/admin/recipes" >                    
+                        <img src="../../img/logo-white.png" alt="Foodfy">
+                    </a>
+                </h1>
+            </div>
+        
+        </div>
+    </header>
+{% endblock navbar %}
+
+{% block content %}
+    <section class="recipes_details">
+        <div class="container">
+        
+            <div class="card_recipe" id="{{recipes.id}}">
+
+                <div class="box_header">
+                    <h2 class="title-default title_recipe">Receita: {{recipes.name}}</h2>
+
+                    <a class="button" href="/admin/recipes/{{recipes.id}}/edit">Editar receita</a>
+                </div>
+
+
+                <figure class="image_recipe">
+                    <img src="{{recipes.recipes_url}}" alt="{{recipes.name}}">
+                </figure>
+
+                <div class="infos_recipe">
+                    <h4 class="title-default subtitle_recipe">{{recipes.name}}</h4>
+
+                    <p class="author_recipe">por {{recipes.author}}</p>
+
+                    <div class="ingredients">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Ingredientes</strong>
+                            {# <button>Esconder</button> #}
+                        </div>
+                        
+                        <div class="info-gerais">
+                            <ul class="desc_ingredients">
+                                {% for ingredient in recipes.ingredients %}
+                                    <li>{{ingredient}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="preparation">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Modo de preparo</strong>
+                            {# <button>Esconder</button> #}
+                        </div>
+
+                        <div class="info-gerais">
+                            {% for preparations in recipes.preparations %}
+                                <p class="desc_preparation">- {{preparations}}</p>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+
+                    <div class="information">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Informações adicionais</strong>
+                            {# <button>Esconder</button> #}
+                        </div>
+                        
+                        <div class="info-gerais">
+                            <p class="desc_information">{{recipes.additional}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  content %}

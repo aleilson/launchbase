@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Administração - Foodfy</title>
+{% endblock head %}
+
+{% block navbar %}
+    <header class="bg-black">
+        <div class="container">
+        
+            <div class="navbar bg-black">
+                <h1 class="navbar__logo">
+                    <a href="/admin/recipes" >                    
+                        <img src="../../img/logo-white.png" alt="Foodfy">
+                    </a>
+                </h1>
+
+                <ul class="navbar__options">
+                    <li><a href="/admin/recipes">Receitas</a></li>
+                    <li><a href="/admin/chefs">Chefs</a></li>
+                </ul>
+            </div>
+        
+        </div>
+    </header>
+{% endblock navbar %}
+
+{% block content %}
+    <section class="recipes">
+        <div class="container">
+            <div class="recipes__thumb">
+            
+                <div class="box_header">
+                    <a class="button" href="/admin/recipes/create">Criar receita</a>
+                </div>
+                <div class="recipes__boxes">
+
+                    {% for recipe in recipes %}
+
+                    <div class="recipes__card" id="{{recipe.id}}">
+                        <figure class="recipes__img">
+                            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                        </figure>
+                        <div class="recipes__card-details">
+                            <p class="recipes__card-title">{{ recipe.title }}</p>
+                            <p class="recipes__card-author">Por {{ recipe.chef_name }} </p>
+                            <a href="/admin/recipes/{{recipe.id}}" class="recipes__card-button">Visualizar</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  content %}

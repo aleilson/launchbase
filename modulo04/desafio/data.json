@@ -1,0 +1,73 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "avatar_url": "https://images.unsplash.com/photo-1503676382389-4809596d5290?ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80",
+      "name": "Silvia Silva",
+      "email": "over@vill.com",
+      "birth": 910656000000,
+      "school_year": "3° ano do ensino ensino médio",
+      "school_load": "8"
+    },
+    {
+      "id": "2",
+      "avatar_url": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "name": "Maik",
+      "email": "maik@brito.com",
+      "birth": 691200000000,
+      "school_year": "3° ano do ensino ensino médio",
+      "school_load": "4"
+    },
+    {
+      "id": "21",
+      "avatar_url": "https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "name": "Brunin",
+      "email": "brunin@bu.com",
+      "birth": 916790400000,
+      "school_year": "1° ano do ensino médio",
+      "school_load": "3"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "1",
+      "name": "GOMES",
+      "avatar_url": "https://images.unsplash.com/photo-1562745486-01e13bd17534?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "birth": 345427200000,
+      "school": "Ensino Superior Completo",
+      "type_class": "Presencial",
+      "area_occupation": "Aee, TOP, BOM, DEMAIS",
+      "created_at": 1582219866356
+    },
+    {
+      "id": "2",
+      "name": "Brother",
+      "avatar_url": "https://images.unsplash.com/photo-1560633000-fe7230e33194?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "birth": 851644800000,
+      "school": "Mestrado",
+      "type_class": "A Distância",
+      "area_occupation": "Geográfica, Inglês",
+      "created_at": 1582219866356
+    },
+    {
+      "id": "3",
+      "avatar_url": "https://images.unsplash.com/photo-1571819040378-386cad2d132a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80",
+      "name": "MAIK",
+      "birth": 929059200000,
+      "school": "Mestrado",
+      "type_class": "Presencial",
+      "area_occupation": "Matemática, Física, Educação Alimentar",
+      "created_at": 1582222764237
+    },
+    {
+      "id": 4,
+      "avatar_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Drilvania",
+      "birth": -4406400000,
+      "school": "Mestrado",
+      "type_class": "Presencial",
+      "area_occupation": "Inglês",
+      "created_at": 1582838246753
+    }
+  ]
+}

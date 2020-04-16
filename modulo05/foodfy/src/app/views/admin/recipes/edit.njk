@@ -1,0 +1,126 @@
+{% extends "layout.njk" %}
+
+{% block navbar %}
+<header class="bg-black">
+    <div class="container">
+
+        <div class="navbar bg-black">
+            <h1 class="navbar__logo">
+                <a href="/admin/recipes">
+                    <img src="../../../img/logo-white.png" alt="Foodfy">
+                </a>
+            </h1>
+
+            <ul class="navbar__options">
+                <li><a href="/admin/recipes">Receitas</a></li>
+                <li><a href="/admin/chefs">Chefs</a></li>
+            </ul>
+        </div>
+
+    </div>
+</header>
+{% endblock navbar %}
+
+{% block content %}
+
+<section class="create-recipes">
+    <div class="container">
+
+        <div class="card card_recipe">
+
+            <form id="form-delete" method="POST" action="/admin/recipes?_method=DELETE">
+
+                <input type="hidden" name="id" value={{recipe.id}}>
+                <button type="submit">Deletar</button>
+
+            </form>
+            <form method="POST" action="/admin/recipes?_method=PUT">
+                <div class="box_header">
+                    <h3>Editando receita</h3>
+                    <button type="submit">Salvar receita</button>
+                </div>
+
+                <div class="item">
+                    <span>Titulo</span>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        value="{{ recipe.title }}">
+                </div>
+
+                <div class="item">
+                    <span>Imagem da Receita</span>
+                    <input 
+                        type="url" 
+                        name="image" 
+                        value="{{ recipe.image }}">
+                </div>
+
+                <div id="ingredients" class="item">
+                    <span>Ingredientes</span>
+
+                    {% for ingredient in recipe.ingredients %}
+                    <div class="ingredient">
+                        <input 
+                            type="text" 
+                            name="ingredients" 
+                            value="{{ ingredient }}" />
+                    </div>
+                    {% endfor %}
+
+                    
+                </div>
+                <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+
+                <div id="preparations" class="item">
+                    <span>Preparação</span>
+                    
+                    {% for preparations in recipe.preparation %}
+                    <div class="preparation">
+                        <input 
+                            type="text" 
+                            name="preparation" 
+                            value="{{ preparations }}" />
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="add-preparation">Adicionar novo passo</button>
+
+                <div class="item">
+                    <span>Chef</span>
+                    <div>
+                        <select name="chef">
+                            {% for chef in chefOptions %}
+                            <option value="{{chef.id}}" {% if recipe.chef_id == chef.id %}selected{% endif %} >
+                                {{chef.name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <span>Informações adicionais</span>
+                    <textarea type="text" name="information" value="{{recipe.information}}">{{recipe.information}}</textarea>
+                </div>
+
+
+                <input type="hidden" name="id" value={{recipe.id}}>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+<script>
+    const formDelete = document.querySelector('#form-delete')
+    formDelete.addEventListener('submit', function (event) {
+        const confirmation = confirm("Deseja realmente deletar?")
+
+        if (!confirmation) {
+            event.preventDefault()
+        }
+    })
+</script>
+
+{% endblock  content %}

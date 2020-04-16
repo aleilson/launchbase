@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block navbar %}
+    <header class="bg-black">
+        <div class="container">
+
+            <div class="navbar bg-black">
+                <h1 class="navbar__logo">
+                    <a href="/admin/recipes">
+                        <img src="../../img/logo-white.png" alt="Foodfy">
+                    </a>
+                </h1>
+
+                <ul class="navbar__options">
+                    <li><a href="/admin/recipes">Receitas</a></li>
+                    <li><a href="/admin/chefs">Chefs</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+{% endblock navbar %}
+
+{% block content %}
+
+    <section class="create-recipes">
+        <div class="container">
+            <form class="card card_recipe" method="POST" action="/admin/recipes">
+                <div class="box_header">
+                    <h3>Criando receita</h3>
+                    <button type="submit">Salvar receita</button>
+                </div>
+
+                {% include 'admin/recipes/fields.njk' %}
+
+            </form>
+        </div>
+    </section>
+
+{% endblock  content %}

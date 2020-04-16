@@ -1,0 +1,67 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Cursos - Desafio 03.1</title>
+{% endblock head %}
+
+{% block content %}
+
+    <section class="thumb">
+    
+        <div class="informacoes__image">
+            <img src="{{informacoes.logo_url}}" alt="Logo {{informacoes.name}}">
+        </div>
+        
+        <div class="informacoes__content">
+            <p>{{informacoes.name}}</p>
+        </div>
+        <div class="informacoes__desc">
+            <p>{{informacoes.description}}</p>
+        </div>
+    </section>
+
+    <section class="techs">
+        <div class="techs__cards">
+
+            {% for course in courses %}
+            <div class="techs__box" id="{{ course.id }}">
+                <div class="techs__number">
+                    <p>{{ course.number_card }}</p>
+                </div>
+                <figure>
+                    <img src="{{ course.image_card }}"
+                        alt="Curso de {{ course.title_card }}">
+                </figure>
+                <div class="techs__info">
+                    <p>
+                        <strong>{{ course.title_card }}</strong>
+                        {{ course.desc_card }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    {# <div class="modal-overlay">
+        <div class="modal maximize">
+            <a class="maximize-modal">
+                <i class="material-icons">call_made</i>
+            </a>
+            <a class="close-modal">
+                <i class="material-icons">close</i>
+            </a>
+
+            <div class="modal-content">
+                <iframe src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div> #}
+
+    <script src="scripts.js"></script>
+
+{% endblock content %}
+
+

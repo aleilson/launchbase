@@ -1,0 +1,84 @@
+{
+  "recipes": [
+    {
+      "id": 2,
+      "name": "Lamen ",
+      "recipes_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "ingredients": [
+        "Alface",
+        "Carne fora do ponto",
+        "Cebola",
+        "Salsa",
+        "Pimenta"
+      ],
+      "preparations": [
+        "Cozinhe 6min",
+        "Coloque sal a gosto",
+        "Refogue  o legumes"
+      ],
+      "additional": "Monte o prato conforme sua vontade.\r\n                    \r\n                    ",
+      "author": "Brother"
+    },
+    {
+      "id": 3,
+      "name": "Salada de Fruta",
+      "recipes_url": "https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "ingredients": [
+        "Frutas"
+      ],
+      "preparations": [
+        "Misture tudo"
+      ],
+      "additional": "Sirva-se com mel",
+      "author": "Deyvid"
+    },
+    {
+      "id": 4,
+      "name": "Hamburguer Caseiro",
+      "recipes_url": "https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "ingredients": [
+        "Pão, Hambuguer, Alface",
+        "Queijo"
+      ],
+      "preparations": [
+        "Monte o combo"
+      ],
+      "additional": "Coma muito",
+      "author": "Deyvid"
+    },
+    {
+      "id": 5,
+      "name": "Pizza de forno",
+      "recipes_url": "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "ingredients": [
+        "Massa",
+        "Agua",
+        "Tomate",
+        "Queijo"
+      ],
+      "preparations": [
+        "Misture tudo"
+      ],
+      "additional": "Depois coloque no forno",
+      "author": "MalukUu"
+    },
+    {
+      "id": 6,
+      "name": "Sanduíche natural",
+      "recipes_url": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80",
+      "ingredients": [
+        "Pão de forma",
+        "Frango desfiado",
+        "Maionese light",
+        "queijo light"
+      ],
+      "preparations": [
+        "Monte o combo de sua preferência",
+        "Toste ele na tostex",
+        "Derreta o queijo"
+      ],
+      "additional": "Sirva-se com maionese e catchup light",
+      "author": "Darcy"
+    }
+  ]
+}

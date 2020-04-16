@@ -1,0 +1,55 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1577702310329-f7293ba86b58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Gomes",
+      "email": "gomes@gomes.com",
+      "birth": 657417600000,
+      "gender": "M",
+      "blood": "AB+",
+      "weight": "89",
+      "height": "172"
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1468141589425-dcddef77ddad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Fernando",
+      "email": "fer@fer.com.br",
+      "birth": 567648000000,
+      "gender": "M",
+      "blood": "B+",
+      "weight": "100",
+      "height": "198"
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "name": "Mario Covas",
+      "avatar_url": "https://images.unsplash.com/photo-1571726656333-2640ca759d22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1098&q=80",
+      "birth": -604022400000,
+      "gender": "M",
+      "services": "Bodybuilder",
+      "created_at": 1582025664790
+    },
+    {
+      "id": 2,
+      "name": "Mario Covas",
+      "avatar_url": "https://images.unsplash.com/photo-1562745486-01e13bd17534?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "birth": 660009600000,
+      "gender": "M",
+      "services": "Musculação, Bodybuilder, Natação",
+      "created_at": 1582025691896
+    },
+    {
+      "id": 3,
+      "name": "Paulo Silva",
+      "avatar_url": "https://images.unsplash.com/photo-1560633000-fe7230e33194?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "birth": 663552000000,
+      "gender": "M",
+      "services": "Hipertrofiação",
+      "created_at": 1582028042030
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>{{course.title_card}}</title>
+{% endblock head %}
+
+{% block content %}
+
+
+    <section class="description">
+
+        <div class="content_description" id="{{ course.id }}">
+            <h3>{{item.desc_description}}</h3>
+
+            <p>{{item.desc_description_two}}</p>
+
+            <p>{{item.desc_description_three}}</p>
+        </div>
+
+    </section>
+
+{% endblock content %}
+
+

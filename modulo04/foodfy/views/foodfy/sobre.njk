@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Sobre - Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+
+    <section class="sobre">
+        <div class="container">
+            <div class="sobre__infos">
+                <h2 class="title-default sobre__title">{{ sobreInfo.title }}</h2>
+                <p class="sobre__desc">
+                    {{ sobreInfo.description }}
+                </p>
+
+                <p class="sobre__desc">
+                    {{ sobreInfo.description_two }}
+                </p>
+            </div>
+
+
+            <div class="sobre__infos">
+                <h2 class="title-default sobre__subtitle">{{ sobreInfo.como_comecouTitle }}</h2>
+                <p class="sobre__desc">
+                    {{ sobreInfo.desc_comecou }}
+                </p>
+
+                <p class="sobre__desc">
+                    
+                </p>
+            </div>
+
+            <div class="sobre__infos">
+                <h2 class="title-default sobre__subtitle">{{ sobreInfo.nossas_receitaTitle }}</h2>
+                <p class="sobre__desc">
+                    {{ sobreInfo.desc_comecoutwo }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+{% endblock  content %}

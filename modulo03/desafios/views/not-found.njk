@@ -1,0 +1,16 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Pagina de Erro - Desafio 03.1</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="erro-404">
+        <div class="container">
+            <h2 class="title-default">{{erro.title_notfound}}</h2>
+            
+            <p>{{erro.desc_notfound}}</p>
+        </div>
+    </section>
+
+{% endblock content %}

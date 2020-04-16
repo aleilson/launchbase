@@ -1,0 +1,64 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Receita detalhada - Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="recipes_details">
+        <div class="container">
+            <div class="card_recipe" id="{{receita.id}}">
+
+                <figure class="image_recipe">
+                    <img src="{{receita.image}}" alt="{{receita.title}}">
+                </figure>
+
+                <div class="infos_recipe">
+                    <h2 class="title-default title_recipe">{{receita.title}}</h2>
+
+                    <p class="author_recipe">por {{receita.author}}</p>
+
+                    <div class="ingredients">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Ingredientes</strong>
+                            <button>Esconder</button>
+                        </div>
+                        
+                        <div class="info-gerais">
+                            <ul class="desc_ingredients">
+                                {% for ingredient in receita.ingredients %}
+                                    <li>{{ingredient}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="preparation">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Modo de preparo</strong>
+                            <button>Esconder</button>
+                        </div>
+
+                        <div class="info-gerais">
+                            {% for preparations in receita.preparation %}
+                                <p class="desc_preparation">{{preparations}}</p>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+
+                    <div class="information">
+                        <div class="head_recipe">
+                            <strong class="title-default title_recipe">Informações adicionais</strong>
+                            <button>Esconder</button>
+                        </div>
+                        
+                        <div class="info-gerais">
+                            <p class="desc_information">{{receita.information}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  content %}
