@@ -2,34 +2,29 @@ const db = require ('../../config/db')
 const { date } =  require ('../../lib/utils')
 
 module.exports = {
-    all(callback) {
-        db.query(`
+    all() {
+        return db.query(`
             SELECT receipts.*, chefs.name AS chef_name
             FROM receipts
-            LEFT JOIN chefs ON (receipts.chef_id = chefs.id)`, function(err, results){
-            if(err) throw `Database error! ${err}`
-
-            callback(results.rows)
-        })
+            LEFT JOIN chefs ON (receipts.chef_id = chefs.id)
+        `)
 
     },
-    create(data, callback ) {
+    create(data) {
 
         const query = `
             INSERT INTO receipts (
-                image,
                 title,
                 ingredients,
                 preparation,
                 information,
                 chef_id,
                 created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+            ) VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id
         `
 
         const values = [
-            data.image,
             data.title,
             data.ingredients,
             data.preparation,
@@ -38,53 +33,41 @@ module.exports = {
             date(Date.now()).iso
         ]
 
-        db.query(query, values, function(err, results){
-
-            if(err) throw `Database error ${err}`
-
-            callback(results.rows[0])
-        })
+        return db.query(query, values)
+        
     },
-    find(id, callback) {
+    find(id) {
 
-        db.query(`
+        return db.query(`
         SELECT receipts.*, chefs.name AS chef_name
         FROM receipts 
         LEFT JOIN chefs ON (receipts.chef_id = chefs.id)
-        WHERE receipts.id = $1`, [id], function(err, results){
-            if(err) throw `Database error ${err}`
+        WHERE receipts.id = $1`, [id])
 
-            callback(results.rows[0])
-        })
     },
-    findBy(filter, callback){
+    findBy(filter){
 
-        db.query(`
+        return db.query(`
             SELECT receipts.*, chefs.name AS chef_name
             FROM receipts
             LEFT JOIN chefs ON (receipts.chef_id = chefs.id)
             WHERE receipts.title ILIKE '%${filter}%'`, function(err, results){
             if(err) throw `Database error! ${err}`
-
-            callback(results.rows)
         })
-
     },
-    update(data, callback){
+    update(data){
 
         const query = `
         UPDATE receipts SET
-            image=($1),
-            title=($2),
-            ingredients=($3),
-            preparation=($4),
-            information=($5),
-            chef_id=($6)
-        WHERE id = $7
+            title=($1),
+            ingredients=($2),
+            preparation=($3),
+            information=($4),
+            chef_id=($5)
+        WHERE id = $6
         `
 
         const values = [
-            data.image,
             data.title,
             data.ingredients,
             data.preparation,
@@ -93,25 +76,13 @@ module.exports = {
             data.id
         ]
 
-        db.query(query, values, function(err, results){
-            if(err) throw `Database error ${err}`
-
-            callback()
-        })
+        return db.query(query, values)
     },
-    delete(id, callback){
-        db.query(` DELETE FROM receipts WHERE id = $1`, [id], function(err, results){
-            if(err) throw `Database error ${err}`
-
-            callback()
-        })
+    delete(id){
+        return db.query(` DELETE FROM receipts WHERE id = $1`, [id])
     },
-    chefsSelectOptions(callback){
-        db.query(`SELECT name, id  FROM chefs`, function(err, results){
-            if(err) throw `Database error ${err}`
-
-            callback(results.rows)
-        })
+    chefsSelectOptions(){
+        return db.query(`SELECT name, id  FROM chefs`)
     },
     paginate(params){
         const { filter, limit, offset, callback } = params

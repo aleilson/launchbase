@@ -26,7 +26,7 @@
 <section class="create-recipes">
     <div class="container">
 
-        <div class="card card_recipe">
+        <div class="card card_recipe card_create">
 
             <form id="form-delete" method="POST" action="/admin/recipes?_method=DELETE">
 
@@ -34,7 +34,7 @@
                 <button type="submit">Deletar</button>
 
             </form>
-            <form method="POST" action="/admin/recipes?_method=PUT">
+            <form method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
                 <div class="box_header">
                     <h3>Editando receita</h3>
                     <button type="submit">Salvar receita</button>
@@ -48,13 +48,13 @@
                         value="{{ recipe.title }}">
                 </div>
 
-                <div class="item">
+                {# <div class="item">
                     <span>Imagem da Receita</span>
                     <input 
                         type="url" 
                         name="image" 
                         value="{{ recipe.image }}">
-                </div>
+                </div> #}
 
                 <div id="ingredients" class="item">
                     <span>Ingredientes</span>

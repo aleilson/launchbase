@@ -8,8 +8,13 @@ module.exports = {
 
     home(req, res){
 
-        Receipt.all(function(recipes){
-            return res.render("foodfy/home", {infoHome: home,  recipes })
+        Receipt.all()
+       .then(function(results){
+            const recipes = results.rows
+            return res.render("foodfy/home", { infoHome: home, recipes })
+
+        }).catch(function(err){
+            throw new Error(err)
         })
 
     },
@@ -57,16 +62,21 @@ module.exports = {
         //    console.log('Caixa sem filtro')
         // }
     },
-    recipes(req, res){
-        Receipt.find(req.params.id, function(recipe){
-            if(!recipe) return res.send("Receipt not found!!")
+    async recipes(req, res){
+        let results = await Receipt.find(req.params.id)
+        const recipe = results.rows[0]
 
-            return  res.render("foodfy/recipes", {recipe} )
-        })  
+        if(!recipe) return res.send("Receipt not found!!")
+        return  res.render("foodfy/recipes", {recipe} )
     },
     chefs(req, res){
-        Chef.all(function(chefs){
+       Chef.all()
+       .then(function(results){
+            const chefs = results.rows
             return res.render("foodfy/chefs", { chefs })
-       })
+           
+        }).catch(function(err){
+            throw new Error(err)
+        })
     }
 }

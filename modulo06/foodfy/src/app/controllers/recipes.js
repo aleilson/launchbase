@@ -1,62 +1,78 @@
 const { age, date } =  require ('../../lib/utils')
 const Receipt = require('../models/Receipt')
+const File = require('../models/File')
 
 module.exports = {
 
     index(req, res){
-
-       Receipt.all(function(recipes){
+       Receipt.all()
+       .then(function(results){
+            const recipes = results.rows
             return res.render("admin/recipes/index", { recipes })
-       })
+
+        }).catch(function(err){
+            throw new Error(err)
+        })
     },
+    
     create(req, res){
+        Receipt.chefsSelectOptions()
+        .then(function(results){
+            const chefOptions = results.rows
+            return res.render("admin/recipes/create", { chefOptions })
+
+        }).catch(function(err){
+            throw new Error(err)
+        })
+    },
+
+    async post(req, res){
+        const keys = Object.keys(req.body)
+    
+        for(key of keys){
+            if(req.body[key] == ""){
+                return res.send('Please fill all fields')
+            }
+        }
+
+        if(req.files.length == 0){
+            return res.send('Please, send at least one image')
+        }
+    
+        let results = await Receipt.create(req.body)
+        const recipeId = results.rows[0].id
+
+        const filesPromise = req.files.map(file => File.create({...file}))
+        await Promise.all(filesPromise)
         
-        Receipt.chefsSelectOptions(function(options){
-
-            return res.render("admin/recipes/create", { chefOptions: options })
-        })
+        return res.redirect(`/admin/recipes/${recipeId}/edit`)
     },
 
-    post(req, res){
+    async show(req, res){
+        let results = await Receipt.find(req.params.id)
+        const recipe = results.rows[0]
 
-        const keys = Object.keys(req.body)
-    
-        for(key of keys){
-            if(req.body[key] == ""){
-                return res.send('Please fill all fields')
-            }
-        }
-    
-        Receipt.create(req.body, function(recipe){
+        if(!recipe) return res.send("Receipt not found!!")
 
-            return res.redirect(`/admin/recipes/${recipe.id}`)
-        })
+        recipe.created_at = date(recipe.created_at).format
+        return  res.render("admin/recipes/show", {recipe} )
     },
 
-    show(req, res){
+    async edit(req, res){
+        let results = await Receipt.find(req.params.id)
+        const recipe = results.rows[0]
 
-        Receipt.find(req.params.id, function(recipe){
-            if(!recipe) return res.send("Receipt not found!!")
+        if(!recipe) return res.send("Receipt not found!!")
 
-            recipe.created_at = date(recipe.created_at).format
+        results = await Receipt.chefsSelectOptions()
+        const chefOptions = results.rows
 
-            return  res.render("admin/recipes/show", {recipe} )
-        })  
-    },
+        results = await Receipt.files(id)
 
-    edit(req, res){
-
-        Receipt.find(req.params.id, function(recipe){
-            if(!recipe) return res.send("Receipt not found!!")
-
-            Receipt.chefsSelectOptions(function(options){
-                return res.render("admin/recipes/edit", { recipe, chefOptions: options })
-            })
-        })
-    
+        return res.render("admin/recipes/edit", { recipe, chefOptions })
     },
     
-    put(req, res){
+    async put(req, res){
         const keys = Object.keys(req.body)
     
         for(key of keys){
@@ -65,17 +81,15 @@ module.exports = {
             }
         }
 
-        Receipt.update(req.body, function(){
-            return res.redirect(`/admin/recipes/${req.body.id}`)
-        })
+        await Receipt.update(req.body)
+
+        return res.redirect(`/admin/recipes/${req.body.id}`)
     },
 
-    delete(req, res){
+    async delete(req, res){
+        await Receipt.delete(req.body.id)
 
-        Receipt.delete(req.body.id, function(){
-            return res.redirect(`/admin/recipes`)
-        })
-    
+        return res.redirect(`/admin/recipes`)
     }
 }
 

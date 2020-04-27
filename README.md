@@ -1,5 +1,5 @@
 LaunchBase-2.0
-Launchbase
+
 Aulas e Desafios do Bootcamp Launchbase
 Módulo 1 - Introdução à programação WEB
  1. Desafio 1.1 - Variáveis, condicionais e operadores
