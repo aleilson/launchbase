@@ -3,13 +3,38 @@
     <input 
         type="text" 
         name="name" 
-        value="{{ chef.name }}">
+        value="{{ chef.name }}"
+    >
 </div>
 
 <div class="item">
     <span>Avatar</span>
-    <input 
-        type="url" 
-        name="avatar_url" 
-        value="{{ chef.avatar_url }}">
+</div>
+
+<div class="item photos-style">
+    <div class="photos-thumb">
+        <div id="photos-upload">
+            <input 
+                id="photos-input"
+                type="file" 
+                name="chefImage"
+                multiple 
+                accept="image/*"
+                onchange="PhotosUpload.handleFileInput(event)"
+            >
+            <p>+</p>
+        </div>
+
+        <div id="photos-preview">
+            {% if chefFile %}
+                <div class="photo" id="{{ chefFile.id }}">
+                    <img src="{{ chefFile.src }}" alt="{{ chefFile.name }}">
+                    <i class="material-icons"
+                        onclick="PhotosUpload.removeOldPhoto(event)"
+                    >close</i>
+                </div>
+                <input type="hidden" name="removed_files">
+            {% endif %}
+        </div>
+    </div>
 </div>

@@ -37,23 +37,27 @@
                 </div>
 
                 <figure class="image_chef">
-                    <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
+                    <img src="{{ chefFile.src }}" alt="{{ chef.name }}">
                 </figure>
 
                 <div class="infos_chef">
                     <h4 class="title-default subtitle_chef">{{chef.name}}</h4>
 
-                    <p class="author_chef">{{chef.total_recipes}}</p>
+                    <p class="author_chef">Total de receitas {{chef.total_recipes}}</p>
 
                     <p class="title-default title_chef">Receitas</p>
 
                     <div class="recipes__boxes">
 
-                        {% for recipe in recipesOption %}
+                        {% for recipe in recipes %}
 
                         <div class="recipes__card" id="{{recipe.id}}">
                             <figure class="recipes__img">
-                                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                                {% for file in recipesFiles %}
+                                    {% if file.recipe_id == recipe.id %}
+                                        <img src="{{ file.src }}" alt="Imagem de {{ file.name }}">
+                                    {% endif %}
+                                {% endfor %}
                             </figure>
                             <div class="recipes__card-details">
                                 <p class="recipes__card-title">{{ recipe.title }}</p>
@@ -65,12 +69,6 @@
 
                     </div>
 
-                    {# <div class="item">
-                        <div class="head_chef">
-                            <strong class="title-default title_chef">Desde</strong>
-                        </div>
-                        <div class="created_chef">{{ chef.created_at }}</div>
-                    </div> #}
                 </div>
             </div>
         </div>

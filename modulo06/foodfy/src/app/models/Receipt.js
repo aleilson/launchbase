@@ -29,7 +29,7 @@ module.exports = {
             data.ingredients,
             data.preparation,
             data.information,
-            data.chef.id,
+            data.chef,
             date(Date.now()).iso
         ]
 

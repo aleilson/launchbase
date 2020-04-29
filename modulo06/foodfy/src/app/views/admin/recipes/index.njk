@@ -39,7 +39,11 @@
 
                     <div class="recipes__card" id="{{recipe.id}}">
                         <figure class="recipes__img">
-                            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                            {% for file in recipesFiles %}
+                                {% if file.recipe_id == recipe.id %}
+                                    <img src="{{ file.src }}" alt="{{ file.name }}">
+                                {% endif %}
+                            {% endfor %}
                         </figure>
                         <div class="recipes__card-details">
                             <p class="recipes__card-title">{{ recipe.title }}</p>

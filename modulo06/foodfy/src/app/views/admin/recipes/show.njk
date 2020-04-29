@@ -38,9 +38,43 @@
                 </div>
 
 
-                <figure class="image_recipe">
-                    <img src="{{recipe.image}}" alt="{{recipe.title}}">
-                </figure>
+                <div class="gallery">
+                    <div class="highlight">
+                        {% if not recipeFiles[0] %}
+                            <img src="https://placehold.it/500x500?text=PRODUTO SEM FOTO" />
+                        {% else %}
+                            <img 
+                                src="{{recipeFiles[0].src}}" 
+                                alt="{{recipeFiles[0].name}}"
+                                onclick="Lightbox.open()"
+                            >
+                        {% endif %}
+
+                        <div class="lightbox-target">
+                            <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                            <a 
+                                href="#" 
+                                class="lightbox-close"
+                                onclick="Lightbox.close()"
+                            >
+                                <i class="material-icons">close</i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="gallery-preview">
+                        {% for file in recipeFiles %}
+                            <img 
+                                src="{{file.src}}" 
+                                alt="{{file.name}}"
+                                {% if loop.index0 == 0 %}
+                                    class="active"
+                                {% endif %}
+                                onclick="ImageGallery.setImage(event)"
+                            >
+                        {% endfor %}
+                    </div>
+                </div>
 
                 <div class="infos_recipe">
                     <h4 class="title-default subtitle_recipe">{{recipe.title}}</h4>
@@ -50,7 +84,6 @@
                     <div class="ingredients">
                         <div class="head_recipe">
                             <strong class="title-default title_recipe">Ingredientes</strong>
-                            {# <button>Esconder</button> #}
                         </div>
                         
                         <div class="info-gerais">
@@ -65,7 +98,6 @@
                     <div class="preparation">
                         <div class="head_recipe">
                             <strong class="title-default title_recipe">Modo de preparo</strong>
-                            {# <button>Esconder</button> #}
                         </div>
 
                         <div class="info-gerais">
@@ -79,7 +111,6 @@
                     <div class="information">
                         <div class="head_recipe">
                             <strong class="title-default title_recipe">Informações adicionais</strong>
-                            {# <button>Esconder</button> #}
                         </div>
                         
                         <div class="info-gerais">

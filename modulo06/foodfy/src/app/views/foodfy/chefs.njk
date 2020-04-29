@@ -15,7 +15,13 @@
 
                     <div class="chefs__card" id="{{chef.id}}">
                         <figure class="chefs__img">
-                            <img src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+                            <{% for chefFile in chefsFiles %}
+
+                                {% if chefFile.id == chef.file_id %}
+                                    <img src="{{ chefFile.src }}" alt="{{ chef.name }}">
+                                {% endif %}
+                                
+                            {% endfor %}
                         </figure>
                         <div class="chefs__card-details">
                             <p class="chefs__card-title">{{ chef.name }}</p>
