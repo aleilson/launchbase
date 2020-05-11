@@ -95,7 +95,7 @@ module.exports = {
   async edit(req, res) {
     const recipeId = req.params.id
 
-    let results = await Receipt.find(req.params.id)
+    let results = await Receipt.find(recipeId)
     const recipe = results.rows[0]
 
     if (!recipe) return res.send("Receipt not found!!")
@@ -103,21 +103,20 @@ module.exports = {
     results = await Receipt.chefsSelectOptions()
     const chefOptions = results.rows
 
-    results = await RecipeFile.findByRecipeId(recipeId);
-    const recipeFilesPromise = results.rows.map(file => File.find(file.file_id));
-    results = await Promise.all(recipeFilesPromise);
+    async function getImage(recipeId) {
+      const results = await RecipeFile.find(recipeId)
+      const files = results.rows.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+      }))
 
-    let recipeFiles = results.map(result => result.rows[0]);
-    recipeFiles = recipeFiles.map(file => ({
-      ...file,
-      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`,
-    }));
+      return files;s
+    }
 
-    return res.render("admin/recipes/edit", {
-      recipe,
-      chefOptions,
-      recipeFiles
-    })
+    const filesPromise = await getImage(recipeId);
+    const recipeFiles = await Promise.all(filesPromise);
+
+    return res.render("admin/recipes/edit", { recipe, chefOptions, recipeFiles })
   },
   async put(req, res) {
     const keys = Object.keys(req.body)

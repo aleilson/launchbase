@@ -12,7 +12,7 @@ module.exports = {
         try {
 
             let results = await Receipt.all();
-            const recipes = results.rows;
+            const recipes = results.rows.filter((recipe, index) => index > 5 ? false : true);
            
             async function getImage(recipeId) {
                 const results = await RecipeFile.find(recipeId);

@@ -4,10 +4,10 @@ const { date } =  require ('../../lib/utils')
 module.exports = {
     all() {
         return db.query(`
-            SELECT receipts.*, chefs.name AS chef_name
-            FROM receipts
-            LEFT JOIN chefs ON (receipts.chef_id = chefs.id)
-        `)
+        SELECT receipts.*, chefs.name AS chef_name
+        FROM receipts
+        LEFT JOIN chefs ON (receipts.chef_id = chefs.id)
+        ORDER BY created_at DESC`)
 
     },
     create(data) {
@@ -97,8 +97,8 @@ module.exports = {
 
             filterQuery = `
             WHERE receipts.title ILIKE '%${filter}%'
+            OR chefs.name ILIKE '%${filter}%'
             `
-
             totalQuery = `(
                 SELECT count(*) FROM receipts
                 ${filterQuery}
