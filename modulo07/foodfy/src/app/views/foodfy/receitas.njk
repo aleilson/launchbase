@@ -1,0 +1,41 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Receitas - Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+
+    <section class="receitas">
+        <div class="container">
+            <div class="receitas__thumb">
+                <div class="receitas__boxes">
+
+                    {% for recipe in recipes %}
+
+                        <div class="receitas__card" id="{{recipe.id}}">
+                            <figure class="receitas__img">
+                                {% for file in recipesFiles %}
+                                    {% if file.recipe_id == recipe.id %}
+                                        <img src="{{ file.src }}" alt="{{ file.name }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </figure>
+                            <strong class="receitas__subtitle">{{ recipe.title }}</strong>
+                            <p class="receitas__author">{{ recipe.author }}</p>
+                        </div>
+                    
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="pagination" 
+                data-page={{pagination.page}} 
+                data-total={{pagination.total}}
+                data-filter={{pagination.filter}}>
+            </div>
+
+        </div>
+    </section>
+{% endblock  content %}

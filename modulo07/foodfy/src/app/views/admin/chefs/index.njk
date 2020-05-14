@@ -1,0 +1,67 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Chefs - Foodfy</title>
+{% endblock head %}
+
+{% block navbar %}
+    <header class="bg-black">
+        <div class="container">
+        
+            <div class="navbar bg-black">
+                <h1 class="navbar__logo">
+                    <a href="/admin/chefs" >                    
+                        <img src="../../img/logo-white.png" alt="Foodfy">
+                    </a>
+                </h1>
+
+                <ul class="navbar__options">
+                    <li><a href="/admin/recipes">Receitas</a></li>
+                    <li><a href="/admin/chefs">Chefs</a></li>
+                </ul>
+            </div>
+        
+        </div>
+    </header>
+{% endblock navbar %}
+
+{% block content %}
+    <section class="chefs">
+        <div class="container">
+            <div class="chefs__thumb">
+            
+                <div class="box_section">
+                    <a class="button" href="/admin/chefs/create">Novo Chef</a>
+                </div>
+
+                <div class="box_section">
+                    <h2> Gerenciar chefs </h2>
+                </div>
+
+                <div class="chefs__boxes">
+
+                    {% for chef in chefs %}
+
+                    <div class="chefs__card" id="{{chef.id}}">
+                        <figure class="chefs__img">
+                            {% for chefFile in chefsFiles %}
+
+                                {% if chefFile.id == chef.file_id %}
+                                    <img src="{{ chefFile.src }}" alt="{{ chef.name }}">
+                                {% endif %}
+                                
+                            {% endfor %}
+                        </figure>
+                        <div class="chefs__card-details">
+                            <p class="chefs__card-title">{{ chef.name }}</p>
+                            <a href="/admin/chefs/{{chef.id}}" class="chefs__card-button">Visualizar</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  content %}
