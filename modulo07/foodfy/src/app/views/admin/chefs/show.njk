@@ -5,24 +5,7 @@
 {% endblock head %}
 
 {% block navbar %}
-    <header class="bg-black">
-        <div class="container">
-        
-            <div class="navbar bg-black">
-                <h1 class="navbar__logo">
-                    <a href="/admin/chefs" >                    
-                        <img src="../../img/logo-white.png" alt="Foodfy">
-                    </a>
-                </h1>
-
-                <ul class="navbar__options">
-                    <li><a href="/admin/recipes">Receitas</a></li>
-                    <li><a href="/admin/chefs">Chefs</a></li>
-                </ul>
-            </div>
-        
-        </div>
-    </header>
+    {% include 'parts/navbar-admin.njk'%}   
 {% endblock navbar %}
 
 {% block content %}
@@ -32,8 +15,18 @@
             <div class="card_chef" id="{{chef.id}}">
 
                 <div class="box_section">
-                    <h2 class="title-default title_chef">Chef: {{chef.name}}</h2>
-                    <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
+
+                    {% if session.adm == true %}
+
+                        <h2 class="title-default title_chef">Chef: {{chef.name}}</h2>
+                        <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
+
+                    {% else %}
+
+                        <h2 class="title-default title_chef">Chef: {{chef.name}}</h2>
+
+                    {% endif %}
+
                 </div>
 
                 <figure class="image_chef">

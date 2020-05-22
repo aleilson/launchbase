@@ -1,0 +1,10 @@
+.container-admin .bg-black{
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.container-admin .accounts button{
+    background: none;
+}

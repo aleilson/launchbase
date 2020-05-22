@@ -1,26 +1,8 @@
 {% extends "layout.njk" %}
 
 {% block navbar %}
-<header class="bg-black">
-    <div class="container">
-
-        <div class="navbar bg-black">
-            <h1 class="navbar__logo">
-                <a href="/admin/chefs">
-                    <img src="../../../img/logo-white.png" alt="Foodfy">
-                </a>
-            </h1>
-
-            <ul class="navbar__options">
-                <li><a href="/admin/recipes">Receitas</a></li>
-                <li><a href="/admin/chefs">Chefs</a></li>
-            </ul>
-        </div>
-
-    </div>
-</header>
+    {% include 'parts/navbar-admin.njk'%}   
 {% endblock navbar %}
-
 {% block content %}
 
 <section class="edit-chefs">

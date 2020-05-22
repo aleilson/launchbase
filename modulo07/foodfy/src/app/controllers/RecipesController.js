@@ -55,6 +55,8 @@ module.exports = {
       return res.send('Please, send at least one image')
     }
 
+    req.body.user_id = req.session.userId
+
     let results = await Receipt.create(req.body)
     const recipeId = results.rows[0].id
 
@@ -110,7 +112,7 @@ module.exports = {
         src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
       }))
 
-      return files;s
+      return files;
     }
 
     const filesPromise = await getImage(recipeId);

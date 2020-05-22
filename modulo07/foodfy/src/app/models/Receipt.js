@@ -19,8 +19,9 @@ module.exports = {
                 preparation,
                 information,
                 chef_id,
+                user_id,
                 created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6)
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING id
         `
 
@@ -30,6 +31,7 @@ module.exports = {
             data.preparation,
             data.information,
             data.chef,
+            data.user_id || 1,
             date(Date.now()).iso
         ]
 

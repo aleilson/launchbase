@@ -1,0 +1,44 @@
+.login input,
+.login textarea{
+    font-weight: 300;
+    font-size: 15px;
+}
+.login .header{
+    text-align: center;
+}
+
+.navbar-login{
+    margin: 0 auto;
+}
+.login form{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login .access{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 20px;
+    align-items: center;
+}
+.login .right{
+    justify-content: flex-end;
+
+}
+
+.login .access p a{
+    color: #969696;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login .access p a:hover{
+    color: #5d5151;
+}
+
+.login .access button{
+    width: 30%;
+}
